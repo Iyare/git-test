@@ -1,0 +1,11 @@
+main {
+    max-width: 800px;
+  }
+  
+  img{
+    display: block;
+    max-width: 100%;
+  }
+  #image {
+    height: auto;
+  }

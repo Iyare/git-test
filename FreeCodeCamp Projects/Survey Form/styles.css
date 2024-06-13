@@ -1,0 +1,22 @@
+body {
+    font-family: sans-serif;
+  }
+  main {
+    /* width: 90%; */
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  input{
+    display: block;
+    width: 100%;
+    padding:10px;
+  }
+  
+  footer {
+    font-size:0.8em;
+  }
+  
+  input[type="radio"], input[type="checkbox"]{
+    display: inline;
+    width:20px;
+  }

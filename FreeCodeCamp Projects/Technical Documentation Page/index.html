@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation Project</title>
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+    <nav id="navbar">
+        <header>CSS Media Queries</header>
+        <ul>
+            <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+            <li><a href="#Syntax" class="nav-link">Syntax</a></li>
+            <li><a href="#Targeting_media_types" class="nav-link">Targeting media types</a></li>
+            <li><a href="#Targeting_media_features" class="nav-link">Targeting media features</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section class="main-section" id="Introduction">
+            <header><h2>Introduction</h2></header>
+            <p>
+                Media queries allow you to apply CSS styles depending on a device's media type (such as print vs. screen) or other features or characteristics such as screen resolution or orientation, aspect ratio, browser viewport width or height, user preferences such as preferring reduced motion, data usage, or transparency.
+            </p>
+
+            <p>
+                Media queries are used for the following:
+                <ul>
+                    <li>To conditionally apply styles with the CSS @media and @import rules.</li>
+                    <li>To target specific media for the &lt;style&gt;, &lt;link&gt;, &lt;source&gt;, and other HTML elements with the media= or sizes=" attributes.</li>
+                    <li>To test and monitor media states using the Window.matchMedia() and EventTarget.addEventListener() methods.</li>
+                </ul>
+            </p>          
+        </section>
+        <section class="main-section" id="Syntax">
+            <header><h2>Syntax</h2></header>
+            <p>
+                A media query is composed of an optional media type and any number of media feature expressions, which may optionally be combined in various ways using logical operators. Media queries are case-insensitive. 
+               <ul>
+                <li>Media types define the broad category of device for which the media query applies: all, print, screen. The type is optional (assumed to be all) except when using the not or only logical operators</li>
+                <li>Media features describe a specific characteristic of the user agent, output device, or environment: 
+                    <ul>
+                        <li>color</li>
+                        <li>width</li>
+                        <li>height</li>
+                        <li>grid</li>
+                        <li>resolution</li>
+                        <li>pointer</li>
+                     
+                    </ul>
+                    <p> For example, the hover feature allows a query to check whether the device supports hovering over elements. Media feature expressions test for their presence or value, and are entirely optional. Each media feature expression must be surrounded by parentheses. </p>
+                </li>
+                <li>Logical operators can be used to compose a complex media query: not, and, and only. You can also combine multiple media queries into a single rule by separating them with commas. </li>
+               </ul>
+            </p>
+            <p>
+                A media query computes to true when the media type (if specified) matches the device on which a document is being displayed and all media feature expressions compute as true. Queries involving unknown media types are always false. 
+
+            </p>
+         
+        </section>
+
+        <section class="main-section" id="Targeting_media_types">
+            <header><h2>Targeting media types</h2></header>
+            <p>
+                Media types describe the general category of a given device. Although websites are commonly designed with screens in mind, you may want to create styles that target special devices such as printers or audio-based screen readers. For example, this CSS targets printers: 
+            </p>
+            <code>
+                @media print {
+                    /* --- */
+                }
+            </code>
+            <p>
+                You can also target multiple devices. For instance, this @media rule uses two media queries to target both screen and print devices: 
+            </p>
+            <code>
+                @media screen, print {
+                    /* --- */
+                }
+            </code>
+            <p>Media features are either range or discrete.</p>
+
+            <p>
+                Discrete features take their value from an enumerated set of possible keyword values. For example, the discrete orientation feature accepts either landscape or portrait.
+            </p>
+            <code>
+            @media print and (orientation: portrait) {
+                    /* … */
+            }
+            </code>
+        </section>
+
+        <section class="main-section" id="Targeting_media_features">
+            <header>Targeting media features</header>
+            <p>
+                Media features describe the specific characteristics of a given user agent, output device, or environment. For instance, you can apply specific styles to widescreen monitors, computers that use mice, or devices that are being used in low-light conditions. This example applies styles when the user's primary input mechanism (such as a mouse) can hover over elements: 
+            </p>
+            <code>
+                @media (hover: hover) {
+                    /* … */
+                  }                  
+            </code>
+            <p>
+                Many range features can be prefixed with "min-" or "max-" to express "minimum condition" or "maximum condition" constraints. For example, this CSS will apply styles only if your browser's viewport width is equal to or narrower than 1250px: 
+            </p>
+            <code>
+                @media (max-width: 1250px) {
+                    /* … */
+                  }
+                  
+            </code>
+            <p>
+                This can also be written as:
+            </p>
+            <code>
+                @media (width &lt;= 1250px) {
+                    /* … */
+                  }
+                  
+            </code>
+            <p>
+                With media query range features, you can either use the inclusive min- and max- prefixes or the more concise range syntax operators &lt= and =&gt.
+            </p>
+        </section>
+
+        <section class="main-section" id="creating_complex_media_queries">
+            <header>Creating complex media queries</header>
+            <p>
+                Sometimes you may want to create a media query that depends on multiple conditions. This is where the logical operators come in: not, and, and only. Furthermore, you can combine multiple media queries into a comma-separated list; this allows you to apply the same styles in different situations. 
+            </p>
+            <p>
+                In the previous example, we saw the and operator used to group a media type with a media feature. The and operator can also combine multiple media features into a single media query. The not operator, meanwhile, negates a media query, basically reversing its normal meaning. The only operator prevents older browsers from applying the styles.   
+            </p>
+                <h3>Combining multiple types or features</h3>
+            <p>
+                The and keyword combines a media feature with a media type or other media features. This example combines two media features to restrict styles to landscape-oriented devices with a width of at least 30 ems: 
+            </p>
+            <code>
+                @media (min-width: 30em) and (orientation: landscape) {
+                    /* … */
+                  }
+                  
+            </code>
+            <p>To limit the styles to devices with a screen, you can chain the media features to the screen media type:</p>
+            <code>
+                @media screen and (min-width: 30em) and (orientation: landscape) {
+                    /* … */
+                  }
+                  
+            </code>
+        </section>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+html {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+    display: flex;
+}
+/* Navigation styles */
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* nav a:visited {
+    color: #000;
+} */
+
+nav li {
+    list-style-type: none;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+nav {
+    height: 100vh;
+    /* width: 40%; */
+    position:fixed;
+}
+
+main {
+    margin-left: 20%;
+}
